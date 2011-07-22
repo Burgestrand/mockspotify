@@ -6,7 +6,7 @@ module Spotify
   module Mock
     # @return [String] path to the libmockspotify C extension binary.
     def self.path
-      File.expand_path('../../src/libmockspotify.', __FILE__) << RbConfig::CONFIG['DLEXT']
+      File.expand_path('../../src/libmockspotify.', __FILE__) << Config::MAKEFILE_CONFIG['DLEXT']
     end
 
     # Overridden to always ffi_lib the mock path.
