@@ -1,3 +1,4 @@
+require 'rubygems' unless defined?(Gem)
 require 'mockspotify'
 require 'minitest/autorun'
 
@@ -12,7 +13,7 @@ describe Spotify::Mock do
   end
 
   it "should have injected itself into Spotify's ancestor chain" do
-    Spotify.singleton_class.ancestors.take(2).must_equal [Spotify::Mock, FFI::Library]
+    (class << Spotify; self; end).ancestors.take(2).must_equal [Spotify::Mock, FFI::Library]
   end
 
   describe ".mock_artist" do
