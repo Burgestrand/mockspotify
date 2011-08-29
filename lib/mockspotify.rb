@@ -26,7 +26,8 @@ module Spotify
   extend Mock
   require 'spotify'
 
-  $VERBOSE = true
+  old_verbose, $VERBOSE = $VERBOSE, true
+
   attach_function :mock_user, :mocksp_user_create, [:string, :string, :string, :string, :relation_type, :bool], :user
   attach_function :mock_track, :mocksp_track_create, [:string, :int, :array, :pointer, :int, :int, :int, :int, :error, :bool], :track
   attach_function :mock_image, :mocksp_image_create, [:image_id, :imageformat, :size_t, :buffer_in, :error], :image
@@ -36,5 +37,6 @@ module Spotify
   attach_function :mock_artistbrowse, :mocksp_artistbrowse_create, [:artist, :bool], :artistbrowse
 
   attach_function :mock_playlist_event, :mocksp_playlist_event, [:int, :playlist], :void
-  $VERBOSE = false
+
+  $VERBOSE = old_verbose
 end
