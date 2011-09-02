@@ -14,3 +14,4 @@ Rake::TestTask.new do |t|
 end
 
 task :test => :compile
+task :default => :test
