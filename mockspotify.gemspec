@@ -1,16 +1,19 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/mockspotify/version', __FILE__)
+libpath = File.expand_path('../lib', __FILE__)
+$:.unshift libpath unless $:.include?(libpath)
+require 'mockspotify/version'
 
 Gem::Specification.new do |gem|
   gem.name     = "mockspotify"
-  gem.summary  = %Q{A mock of libspotify for use in development of language bindings}
-  gem.homepage = "https://github.com/Burgestrand/libmockspotify"
+  gem.summary  = %Q{FFI bindings to the mockspotify C library}
+  gem.homepage = "https://github.com/Burgestrand/mockspotify"
   gem.authors  = ["Kim Burgestrand"]
   gem.email    = 'kim@burgestrand.se'
 
   gem.files         = `git ls-files`.split("\n")
+  gem.files        += `cd ext/libmockspotify && git ls-files src/`.split("\n").map { |path| "ext/libmockspotify/#{path}" }
   gem.executables   = []
-  gem.require_paths = ["lib", "src"]
+  gem.require_paths = ["lib"]
   gem.extensions    << 'ext/extconf.rb'
 
   gem.add_dependency 'spotify'
