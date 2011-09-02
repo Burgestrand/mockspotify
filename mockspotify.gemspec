@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = []
   gem.require_paths = ["lib", "src"]
-  gem.extensions    << 'src/extconf.rb'
+  gem.extensions    << 'ext/extconf.rb'
 
   gem.add_dependency 'spotify'
 

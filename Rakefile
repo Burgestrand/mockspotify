@@ -2,7 +2,7 @@
 require 'bundler/gem_tasks'
 
 task :compile do
-  Dir.chdir('src') do
+  Dir.chdir('ext') do
     sh 'ruby extconf.rb'
     sh 'make'
   end
